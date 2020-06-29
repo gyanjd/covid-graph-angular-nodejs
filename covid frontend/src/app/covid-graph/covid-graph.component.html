@@ -1,0 +1,64 @@
+<div class="container-fluid jumbotron main-part">
+  <div *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Country: </label>
+        <select name="" id="" class="form-control" #mySelect
+        (change)='onCountrySelected(mySelect.value)'>
+          <option value="">All</option>
+          <option value="{{country}}" *ngFor="let country of countries">{{country}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Date :</label>
+        <select class="form-control"  #myDate
+        (change)='onDateSelected(myDate.value)' id="dateSelected" [(ngModel)]="selectedDate">
+          <option value="-1">Latest</option>
+          <option value="{{i}}" *ngFor="let date of date_array; let i = index">{{date}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="!isLoading">
+    <div class="col-md-3">
+      <div class="text-center">
+        <h3>{{c_case | number}}</h3>
+        <h5> Confirmed Case</h5>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="text-center">
+        <h3>{{d_case | number}}</h3>
+        <h5> Deaths Case</h5>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="text-center">
+        <h3>{{m_rate }}</h3>
+        <h5> Mortality Rate</h5>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div style="display: block; height: 300px;">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                *ngIf="!isLoading">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
+  

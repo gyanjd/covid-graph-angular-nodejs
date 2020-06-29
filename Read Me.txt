@@ -1,0 +1,13 @@
+Instruction
+
+1) open covid backend 
+2) npm install
+3) node index.js
+
+4) open covid frontend
+5) npm install
+6) ng serve
+
+
+**note
+I'm not using any Database, Data are fetching directly from source. 
